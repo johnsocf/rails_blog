@@ -5,17 +5,58 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
-<h1>My Blog</h1>
-<h2>This is a super awesome blog.</h2>
+	<div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		  <div class="container">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">
+		      	My Blog
+		      </a>
+		    </div>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+		     <ul class="nav navbar-nav navbar-right">
+		      <% if current_user %>
+	       		<li>
+		       		<a href="#">
+		       			<%= current_user.email %>
+		       		</a>
+	       		</li>
+	       		<li>
+	       			<!-- deletes the session resource -->
+	       			<%= link_to 'Sign Out', destroy_user_session_path,  method: 'delete' %>
+	       		</li>
+	       		<% else %>
+	       		<li>
+	       			<%= link_to 'Sign In', new_user_session_path %>
+	       		</li>
+	       		<li>
+	       			<!-- deletes the session resource -->
+	       			<%= link_to 'Sign Up', new_user_registration_path %>
+	       		</li>
+       		<% end %>
+      	 </ul>
+		  </div>
+		</nav>
+		<h1>My Blog</h1>
+		<h2>This is a super awesome blog.</h2>
+
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
 
 
-<%= yield %>
+		<%= yield %>
+
+	</div>
 
 </body>
 </html>
