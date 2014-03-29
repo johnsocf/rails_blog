@@ -1,3 +1,7 @@
 
 
 <p>If you want to know more about my life and adventures, definitely keep reading.</p>
+
+<% @users.each do |user| %>
+<p><%= user.email %></p>
+<% end %>
