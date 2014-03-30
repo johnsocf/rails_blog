@@ -1,0 +1,12 @@
+<h2>This is a post</h2>
+
+<%= form_tag("/posts", method: "post", :html => {class: 'blog-form'}) do %>
+
+  <%= label_tag(:q, "Title:", class: 'blog-label') %>
+  <%= text_field_tag(:q) %>
+   <%= label_tag(:q, "Content:") %>
+  <%= text_area_tag(:message, "New blog post", size: "50x6") %>
+  <%= submit_tag("Post") %>
+
+<% end %>
+
